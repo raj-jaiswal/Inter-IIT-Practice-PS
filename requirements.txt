@@ -1,0 +1,9 @@
+numpy
+pandas
+pathway
+gradio>=3.0
+pytesseract
+pillow
+opencv-python-headless
+rapidfuzz
+spacy
