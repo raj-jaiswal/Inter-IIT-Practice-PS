@@ -69,9 +69,7 @@ Your Dockerfile (provided) does the following:
    CMD ["sh", "-c", "python -u ./test.py && python -u ./KYC.py"]
    ```
 
-   This runs `test.py` first; when it completes successfully the container runs `KYC.py`. If `test.py` is long-running (a server), `KYC.py` will not start until `test.py` exits. (If you want both concurrently, use a wrapper script that starts both in the background or use a process supervisor.)
-
-**Tip:** to get live logs in Docker, make sure Python prints unbuffered output (your `-u` flag does that). If you see buffering, ensure `PYTHONUNBUFFERED=1` or use `python -u`.
+**Note:** to get live logs in Docker, make sure Python prints unbuffered output. If you see buffering, ensure `PYTHONUNBUFFERED=1` or use `python -u`.
 
 ---
 
@@ -90,7 +88,7 @@ Your Dockerfile (provided) does the following:
 4. **Name extraction (spaCy + heuristics)**:
 
    * Run spaCy NER (`en_core_web_md`) to find `PERSON` entities.
-   * Use a hybrid scoring approach: prefer a line immediately above gender (`Male`/`Female`) or DOB lines; score spaCy candidates by proximity and shape; **trim trailing lowercase tokens** from candidates (so `SAMARTH SHARMA Lemma,` → `SAMARTH SHARMA`).
+   * Use a hybrid scoring approach: prefer a line immediately above gender (`Male`/`Female`) or DOB lines; score spaCy candidates by proximity and shape
    * Filter header lines (e.g., `INCOME TAX`, `GOVT. OF INDIA`, `AADHAAR`) so they don't get chosen as names.
 
 5. **Matching**:
