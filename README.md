@@ -184,8 +184,4 @@ sudo apt install -y tesseract-ocr-eng tesseract-ocr-hin
 ---
 
 ## License
-
 MIT License
-```
-
----
